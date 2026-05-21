@@ -11,6 +11,7 @@ app_ui = ui.page_fluid(
     # -------------------------------------------------
     # URL hash → Shiny input
     # -------------------------------------------------
+
     ui.tags.script("""
     (function () {
       const hash = window.location.hash.substring(1);
@@ -25,96 +26,136 @@ app_ui = ui.page_fluid(
           setTimeout(send, 300);
         }
       }
+
       send();
     })();
     """),
 
     # -------------------------------------------------
-    # Modern Medical Dashboard CSS
+    # CSS
     # -------------------------------------------------
+
     ui.tags.style("""
 
-    body {
-    background: #f4f7fb;
-    font-family: 'Segoe UI', sans-serif;
-    color: #1f2937;
+    /* =========================================
+       Global
+    ========================================= */
 
-    padding: 10px 18px;
-    overflow: hidden;
-}
+    html, body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body {
+        background: #f4f7fb;
+        font-family: 'Segoe UI', sans-serif;
+        color: #1f2937;
+
+        padding: 10px 18px;
+    }
+
     h1,h2,h3,h4,h5 {
         font-weight: 700;
     }
 
-    /* =========================
+    /* =========================================
        Sidebar
-    ========================== */
+    ========================================= */
 
     .sidebar {
         background: white;
-        border-radius: 22px;
-        padding: 26px;
+        border-radius: 20px;
+        padding: 18px;
+
         border: 1px solid #e5e7eb;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+        box-shadow:
+            0 8px 24px rgba(0,0,0,0.05);
     }
 
-    /* =========================
+    /* =========================================
        Card
-    ========================== */
+    ========================================= */
 
     .card {
+
         background: white;
-        border-radius: 24px;
+
+        border-radius: 22px;
+
         padding: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-        margin-bottom: 14px;
+
+        box-shadow:
+            0 8px 24px rgba(0,0,0,0.05);
+
         border: 1px solid #eef2f7;
     }
 
-    /* =========================
-       Titles
-    ========================== */
+    /* =========================================
+       Section title
+    ========================================= */
 
     .section-title {
-        font-size: 20px;
+
+        font-size: 18px;
+
         font-weight: 700;
-        margin-bottom: 20px;
+
+        margin-bottom: 16px;
+
         color: #111827;
     }
 
-    /* =========================
-       Summary cards
-    ========================== */
+    /* =========================================
+       Summary Cards
+    ========================================= */
 
     .summary-card {
+
         background: white;
-        border-radius: 20px;
+
+        border-radius: 18px;
+
         padding: 16px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+        box-shadow:
+            0 6px 18px rgba(0,0,0,0.04);
+
         border: 1px solid #eef2f7;
+
         text-align: center;
     }
 
     .summary-title {
-        font-size: 32px;
+
+        font-size: 14px;
+
         color: #6b7280;
-        margin-bottom: 10px;
+
+        margin-bottom: 8px;
     }
 
     .summary-value {
-        font-size: 40px;
+
+        font-size: 34px;
+
         font-weight: 800;
+
         color: #111827;
     }
 
-    /* =========================
+    /* =========================================
        Risk Number
-    ========================== */
+    ========================================= */
 
     .risk-number {
+
         font-size: 64px;
+
         font-weight: 800;
+
         line-height: 1;
+
         margin-bottom: 12px;
     }
 
@@ -130,17 +171,23 @@ app_ui = ui.page_fluid(
         color: #dc2626;
     }
 
-    /* =========================
-       Risk Badge
-    ========================== */
+    /* =========================================
+       Risk Tag
+    ========================================= */
 
     .risk-tag {
+
         display: inline-block;
-        padding: 8px 18px;
+
+        padding: 7px 16px;
+
         border-radius: 999px;
+
         font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 24px;
+
+        font-size: 13px;
+
+        margin-bottom: 16px;
     }
 
     .tag-low {
@@ -158,13 +205,16 @@ app_ui = ui.page_fluid(
         color: #991b1b;
     }
 
-    /* =========================
+    /* =========================================
        Risk Bar
-    ========================== */
+    ========================================= */
 
     .risk-bar {
-        height: 18px;
+
+        height: 14px;
+
         border-radius: 999px;
+
         background:
             linear-gradient(
                 to right,
@@ -172,96 +222,125 @@ app_ui = ui.page_fluid(
                 #facc15,
                 #ef4444
             );
+
         position: relative;
-        margin-top: 16px;
+
+        margin-top: 12px;
     }
 
     .risk-marker {
+
         position: absolute;
-        top: -6px;
-        width: 5px;
-        height: 30px;
+
+        top: -5px;
+
+        width: 4px;
+
+        height: 24px;
+
         border-radius: 999px;
+
         background: #111827;
     }
 
-    /* =========================
+    /* =========================================
        Factors
-    ========================== */
+    ========================================= */
 
     .factor-item {
+
         background: #f9fafb;
-        border-radius: 14px;
+
+        border-radius: 12px;
+
         padding: 10px 14px;
+
         margin-bottom: 8px;
+
         display: flex;
+
         align-items: center;
-        gap: 12px;
+
+        gap: 10px;
+
         border: 1px solid #e5e7eb;
     }
 
     .factor-yes {
+
         color: #16a34a;
+
         font-weight: 800;
-        font-size: 18px;
     }
 
     .factor-no {
+
         color: #dc2626;
+
         font-weight: 800;
-        font-size: 18px;
     }
 
-    /* =========================
+    /* =========================================
        Radio Buttons
-    ========================== */
+    ========================================= */
 
     .shiny-input-radiogroup {
-        margin-bottom: 28px;
+
+        margin-bottom: 18px;
     }
 
     .shiny-input-radiogroup label {
+
         font-weight: 700;
-        font-size: 15px;
+
+        font-size: 14px;
     }
 
     .form-check {
-        margin-top: 10px;
+
+        margin-top: 6px;
     }
 
-    /* =========================
-       JSON viewer
-    ========================== */
+    /* =========================================
+       JSON Viewer
+    ========================================= */
 
     pre {
+
         background: #111827;
+
         color: #e5e7eb;
-        border-radius: 16px;
-        padding: 18px;
-        max-height: 400px;
+
+        border-radius: 14px;
+
+        padding: 14px;
+
+        max-height: 220px;
+
         overflow-y: auto;
-        font-size: 13px;
+
+        font-size: 12px;
     }
 
-    /* =========================
+    /* =========================================
        Link
-    ========================== */
+    ========================================= */
 
     a {
+
         text-decoration: none;
+
         color: #2563eb;
+
         font-weight: 600;
     }
 
-    a:hover {
-        color: #1d4ed8;
-    }
-
-    /* =========================
-       Hidden inputs
-    ========================== */
+    /* =========================================
+       Hidden Inputs
+    ========================================= */
 
     #token,#pid,#fhir,#obs {
+
         display:none !important;
     }
 
@@ -282,8 +361,9 @@ app_ui = ui.page_fluid(
 
     ui.h1(
         "Predict In-hospital Mortality by CHARM Score",
+
         style="""
-        margin-bottom:12px;
+        margin-bottom:10px;
         font-weight:800;
         font-size:42px;
         """
@@ -294,23 +374,27 @@ app_ui = ui.page_fluid(
     # -------------------------------------------------
 
     ui.tags.details(
+
         ui.tags.summary(
             "FHIR Patient & Observation Data"
         ),
-        ui.tags.pre(ui.output_text("patient_info"))
+
+        ui.tags.pre(
+            ui.output_text("patient_info")
+        )
     ),
 
-
-
     # -------------------------------------------------
-    # Layout
+    # Main Layout
     # -------------------------------------------------
 
     ui.layout_sidebar(
+
         sidebar_width="280px",
-        # =================================================
+
+        # =============================================
         # Sidebar
-        # =================================================
+        # =============================================
 
         ui.sidebar(
 
@@ -321,7 +405,12 @@ app_ui = ui.page_fluid(
 
             ui.p(
                 "Auto-populated from FHIR resources and editable by clinicians.",
-                style="color:#6b7280;"
+
+                style="""
+                color:#6b7280;
+                font-size:14px;
+                margin-bottom:18px;
+                """
             ),
 
             ui.input_radio_buttons(
@@ -360,92 +449,124 @@ app_ui = ui.page_fluid(
             ),
         ),
 
-        # =================================================
+        # =============================================
         # Main Content
-        # =================================================
+        # =============================================
 
         ui.div(
 
-            # =============================================
+            # =========================================
             # Summary Cards
-            # =============================================
+            # =========================================
 
             ui.layout_columns(
 
                 ui.div(
+
                     {"class":"summary-card"},
-                    ui.div("CHARM Score", class_="summary-title"),
-                    ui.div(ui.output_text("score_text"),
-                           class_="summary-value")
-                ),
 
-                ui.div(
-                    {"class":"summary-card"},
-                    ui.div("Activated Factors",
-                           class_="summary-title"),
-                    ui.div(ui.output_text("factor_count"),
-                           class_="summary-value")
-                ),
+                    ui.div(
+                        "CHARM Score",
+                        class_="summary-title"
+                    ),
 
-                col_widths=[6,6]
-            )
-
-            
-
-            # =============================================
-            # Risk Card
-            # =============================================
-
-            ui.div(
-
-                {"class":"card"},
-
-                ui.div(
-                    "Estimated In-hospital Mortality Risk",
-                    class_="section-title"
-                ),
-
-                ui.output_ui("prob"),
-
-                ui.output_ui("risk_label"),
-
-                ui.output_ui("risk_bar"),
-
-                ui.hr(),
-
-                ui.p(
-                    ui.a(
-                        "View Reference Paper",
-                        href="https://www.ncbi.nlm.nih.gov/pubmed/?term=27832977",
-                        target="_blank"
+                    ui.div(
+                        ui.output_text("score_text"),
+                        class_="summary-value"
                     )
                 ),
 
-                ui.p(
-                    "Produced by Dr. Chin-Chieh Wu",
-                    style="color:#6b7280;"
+                ui.div(
+
+                    {"class":"summary-card"},
+
+                    ui.div(
+                        "Activated Factors",
+                        class_="summary-title"
+                    ),
+
+                    ui.div(
+                        ui.output_text("factor_count"),
+                        class_="summary-value"
+                    )
                 ),
 
-                ui.p(
-                    "SMART on FHIR UI enhanced by Howard",
-                    style="color:#6b7280;"
-                )
+                col_widths=[6,6]
             ),
 
-            # =============================================
-            # Factors Card
-            # =============================================
+            # =========================================
+            # Risk + Factors Row
+            # =========================================
 
-            ui.div(
+            ui.layout_columns(
 
-                {"class":"card"},
+                # =====================================
+                # Risk Card
+                # =====================================
 
                 ui.div(
-                    "Contributing Clinical Factors",
-                    class_="section-title"
+
+                    {"class":"card"},
+
+                    ui.div(
+                        "Estimated In-hospital Mortality Risk",
+                        class_="section-title"
+                    ),
+
+                    ui.output_ui("prob"),
+
+                    ui.output_ui("risk_label"),
+
+                    ui.output_ui("risk_bar"),
+
+                    ui.hr(),
+
+                    ui.p(
+
+                        ui.a(
+                            "View Reference Paper",
+                            href="https://www.ncbi.nlm.nih.gov/pubmed/?term=27832977",
+                            target="_blank"
+                        )
+                    ),
+
+                    ui.p(
+                        "Produced by Dr. Chin-Chieh Wu",
+
+                        style="""
+                        color:#6b7280;
+                        font-size:13px;
+                        margin-bottom:4px;
+                        """
+                    ),
+
+                    ui.p(
+                        "SMART on FHIR UI enhanced by Howard",
+
+                        style="""
+                        color:#6b7280;
+                        font-size:13px;
+                        """
+                    )
                 ),
 
-                ui.output_ui("factor_list")
+                # =====================================
+                # Factors Card
+                # =====================================
+
+                ui.div(
+
+                    {"class":"card"},
+
+                    ui.div(
+                        "Contributing Clinical Factors",
+                        class_="section-title"
+                    ),
+
+                    ui.output_ui("factor_list")
+                ),
+
+                col_widths=[7,5]
             )
         )
     )
@@ -487,6 +608,7 @@ def server(input, output, session):
         headers = {
             "Authorization":
                 f"Bearer {input.token()}",
+
             "Accept":
                 "application/fhir+json"
         }
@@ -516,13 +638,14 @@ def server(input, output, session):
     @output
     @render.text
     def patient_info():
+
         return json.dumps(
             fhir_data(),
             indent=2
         )
 
     # -------------------------------------------------
-    # Initialize from FHIR Observation
+    # Init UI from FHIR
     # -------------------------------------------------
 
     @reactive.Effect
@@ -550,31 +673,37 @@ def server(input, output, session):
             )
 
             if code=="chills" and c.get("valueInteger")==1:
+
                 defaults["chills"]="Yes"
 
             elif code=="malignancy" and c.get("valueInteger")==1:
+
                 defaults["malignancy"]="Yes"
 
             elif code=="789-8" and \
                  c.get("valueQuantity",{}).get("value",9)<4:
+
                 defaults["anemia"]="Yes"
 
             elif code=="788-0" and \
                  c.get("valueQuantity",{}).get("value",0)>14.5:
+
                 defaults["rdw"]="Yes"
 
             elif code=="8310-5" and \
                  c.get("valueQuantity",{}).get("value",99)<36:
+
                 defaults["hypothermia"]="Yes"
 
         for k,v in defaults.items():
+
             session.send_input_message(
                 k,
                 {"value":v}
             )
 
     # -------------------------------------------------
-    # Risk Score
+    # Score
     # -------------------------------------------------
 
     def score():
@@ -590,21 +719,22 @@ def server(input, output, session):
             input.rdw()=="Yes",
 
             input.malignancy()=="Yes"
-
         ])
 
     # -------------------------------------------------
-    # Summary Cards
+    # Summary
     # -------------------------------------------------
 
     @output
     @render.text
     def score_text():
+
         return str(score())
 
     @output
     @render.text
     def factor_count():
+
         return f"{score()} / 5"
 
     # -------------------------------------------------
@@ -703,6 +833,7 @@ def server(input, output, session):
 
                 ui.span(
                     "✔" if active else "✘",
+
                     class_=
                         "factor-yes"
                         if active
