@@ -35,12 +35,13 @@ app_ui = ui.page_fluid(
     ui.tags.style("""
 
     body {
-        background: #f4f7fb;
-        font-family: 'Segoe UI', sans-serif;
-        color: #1f2937;
-        padding: 20px;
-    }
+    background: #f4f7fb;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1f2937;
 
+    padding: 10px 18px;
+    overflow: hidden;
+}
     h1,h2,h3,h4,h5 {
         font-weight: 700;
     }
@@ -64,9 +65,9 @@ app_ui = ui.page_fluid(
     .card {
         background: white;
         border-radius: 24px;
-        padding: 30px;
+        padding: 20px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-        margin-bottom: 24px;
+        margin-bottom: 14px;
         border: 1px solid #eef2f7;
     }
 
@@ -88,14 +89,14 @@ app_ui = ui.page_fluid(
     .summary-card {
         background: white;
         border-radius: 20px;
-        padding: 24px;
+        padding: 16px;
         box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         border: 1px solid #eef2f7;
         text-align: center;
     }
 
     .summary-title {
-        font-size: 15px;
+        font-size: 32px;
         color: #6b7280;
         margin-bottom: 10px;
     }
@@ -111,7 +112,7 @@ app_ui = ui.page_fluid(
     ========================== */
 
     .risk-number {
-        font-size: 82px;
+        font-size: 64px;
         font-weight: 800;
         line-height: 1;
         margin-bottom: 12px;
@@ -191,8 +192,8 @@ app_ui = ui.page_fluid(
     .factor-item {
         background: #f9fafb;
         border-radius: 14px;
-        padding: 14px 18px;
-        margin-bottom: 12px;
+        padding: 10px 14px;
+        margin-bottom: 8px;
         display: flex;
         align-items: center;
         gap: 12px;
@@ -282,8 +283,9 @@ app_ui = ui.page_fluid(
     ui.h1(
         "Predict In-hospital Mortality by CHARM Score",
         style="""
-        margin-bottom:25px;
+        margin-bottom:12px;
         font-weight:800;
+        font-size:42px;
         """
     ),
 
@@ -298,14 +300,14 @@ app_ui = ui.page_fluid(
         ui.tags.pre(ui.output_text("patient_info"))
     ),
 
-    ui.br(),
+
 
     # -------------------------------------------------
     # Layout
     # -------------------------------------------------
 
     ui.layout_sidebar(
-
+        sidebar_width="280px",
         # =================================================
         # Sidebar
         # =================================================
@@ -388,7 +390,7 @@ app_ui = ui.page_fluid(
                 col_widths=[6,6]
             ),
 
-            ui.br(),
+            
 
             # =============================================
             # Risk Card
