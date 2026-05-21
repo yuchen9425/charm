@@ -388,7 +388,7 @@ app_ui = ui.page_fluid(
                 ),
 
                 col_widths=[6,6]
-            ),
+            )
 
             
 
