@@ -30,7 +30,6 @@ app_ui = ui.page_fluid(
 
     ui.tags.style("""
 
-    /* === Global === */
     html, body { height: 100%; }
     body {
         background: #f4f7fb;
@@ -39,9 +38,8 @@ app_ui = ui.page_fluid(
         padding: 12px 20px 20px;
         margin: 0;
     }
-    h1, h2, h3, h4, h5 { font-weight: 700; }
+    h1,h2,h3,h4,h5 { font-weight: 700; }
 
-    /* === Page header === */
     .page-header {
         display: flex;
         align-items: baseline;
@@ -50,26 +48,13 @@ app_ui = ui.page_fluid(
         flex-wrap: wrap;
         gap: 6px;
     }
-    .page-title {
-        font-size: 26px;
-        font-weight: 800;
-        color: #111827;
-        line-height: 1.2;
-    }
-    .page-meta {
-        font-size: 12px;
-        color: #9ca3af;
-    }
+    .page-title { font-size: 26px; font-weight: 800; color: #111827; line-height: 1.2; }
+    .page-meta  { font-size: 12px; color: #9ca3af; }
 
-    /* === FHIR details === */
-    details {
-        margin-bottom: 10px;
-        font-size: 13px;
-        color: #6b7280;
-    }
+    details { margin-bottom: 10px; font-size: 13px; color: #6b7280; }
     details summary { cursor: pointer; user-select: none; }
 
-    /* === Sidebar === */
+    /* Sidebar */
     .sidebar {
         background: white;
         border-radius: 16px;
@@ -77,62 +62,22 @@ app_ui = ui.page_fluid(
         border: 1px solid #e5e7eb;
         box-shadow: 0 4px 14px rgba(0,0,0,0.04);
     }
-
-    /* === Sidebar section title === */
     .sidebar-title {
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: .04em;
-        text-transform: uppercase;
-        color: #9ca3af;
-        margin-bottom: 4px;
+        font-size: 13px; font-weight: 700; letter-spacing:.04em;
+        text-transform: uppercase; color: #9ca3af; margin-bottom: 4px;
     }
     .sidebar-sub {
-        font-size: 12px;
-        color: #9ca3af;
-        margin-bottom: 14px;
-        line-height: 1.4;
+        font-size: 12px; color: #9ca3af; margin-bottom: 14px; line-height: 1.4;
     }
-
-    /* === Radio buttons — tighter spacing === */
     .shiny-input-radiogroup { margin-bottom: 12px; }
     .shiny-input-radiogroup > label {
-        font-size: 13px;
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 3px;
-        display: block;
+        font-size: 13px; font-weight: 600; color: #374151;
+        margin-bottom: 3px; display: block;
     }
     .form-check { margin-top: 2px; }
     .form-check-label { font-size: 13px; color: #374151; }
 
-    /* === Card === */
-    .card {
-        background: white;
-        border-radius: 16px;
-        padding: 18px 20px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-        border: 1px solid #eef2f7;
-        height: 100%;
-    }
-
-    /* === Section title inside card === */
-    .section-title {
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: .04em;
-        text-transform: uppercase;
-        color: #9ca3af;
-        margin-bottom: 12px;
-    }
-
-    /* === Summary cards (top row) === */
-    .summary-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 10px;
-    }
+    /* Summary cards */
     .summary-card {
         background: white;
         border-radius: 14px;
@@ -140,111 +85,73 @@ app_ui = ui.page_fluid(
         box-shadow: 0 4px 14px rgba(0,0,0,0.04);
         border: 1px solid #eef2f7;
         text-align: center;
+        margin-bottom: 10px;
     }
     .summary-title {
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .04em;
-        text-transform: uppercase;
-        color: #9ca3af;
-        margin-bottom: 6px;
+        font-size: 12px; font-weight: 600; letter-spacing:.04em;
+        text-transform: uppercase; color: #9ca3af; margin-bottom: 6px;
     }
-    .summary-value {
-        font-size: 28px;
-        font-weight: 800;
-        color: #111827;
-        line-height: 1;
+    .summary-value { font-size: 28px; font-weight: 800; color: #111827; line-height: 1; }
+
+    /* Card */
+    .card {
+        background: white;
+        border-radius: 16px;
+        padding: 18px 20px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+        border: 1px solid #eef2f7;
+    }
+    .section-title {
+        font-size: 13px; font-weight: 700; letter-spacing:.04em;
+        text-transform: uppercase; color: #9ca3af; margin-bottom: 12px;
     }
 
-    /* === Risk number === */
-    .risk-number {
-        font-size: 52px;
-        font-weight: 800;
-        line-height: 1;
-        margin-bottom: 8px;
-    }
+    /* Risk */
+    .risk-number { font-size: 52px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
     .risk-low  { color: #16a34a; }
     .risk-mid  { color: #d97706; }
     .risk-high { color: #dc2626; }
 
-    /* === Risk tag === */
     .risk-tag {
-        display: inline-block;
-        padding: 5px 14px;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 12px;
-        margin-bottom: 14px;
+        display: inline-block; padding: 5px 14px; border-radius: 999px;
+        font-weight: 700; font-size: 12px; margin-bottom: 14px;
     }
     .tag-low  { background: #dcfce7; color: #166534; }
     .tag-mid  { background: #fef3c7; color: #92400e; }
     .tag-high { background: #fee2e2; color: #991b1b; }
 
-    /* === Risk bar === */
     .risk-bar {
-        height: 10px;
-        border-radius: 999px;
+        height: 10px; border-radius: 999px;
         background: linear-gradient(to right, #22c55e, #facc15, #ef4444);
-        position: relative;
-        margin-top: 10px;
-        margin-bottom: 16px;
+        position: relative; margin-top: 10px; margin-bottom: 4px;
     }
     .risk-marker {
-        position: absolute;
-        top: -5px;
-        width: 3px;
-        height: 20px;
-        border-radius: 999px;
-        background: #1f2937;
+        position: absolute; top: -5px; width: 3px; height: 20px;
+        border-radius: 999px; background: #1f2937;
     }
     .risk-bar-labels {
-        display: flex;
-        justify-content: space-between;
-        font-size: 11px;
-        color: #9ca3af;
-        margin-top: 4px;
+        display: flex; justify-content: space-between;
+        font-size: 11px; color: #9ca3af; margin-bottom: 14px;
     }
 
-    /* === Factor items === */
+    /* Factors */
     .factor-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 10px;
-        border-radius: 10px;
-        margin-bottom: 6px;
-        background: #f9fafb;
-        border: 1px solid #e5e7eb;
-        font-size: 13px;
+        display: flex; align-items: center; gap: 10px;
+        padding: 8px 10px; border-radius: 10px; margin-bottom: 6px;
+        background: #f9fafb; border: 1px solid #e5e7eb; font-size: 13px;
     }
     .factor-yes { color: #16a34a; font-weight: 800; font-size: 15px; }
     .factor-no  { color: #dc2626; font-weight: 800; font-size: 15px; }
 
-    /* === Divider === */
     hr { border: none; border-top: 1px solid #f3f4f6; margin: 14px 0 10px; }
-
-    /* === Footer links === */
     .footer-text { font-size: 12px; color: #9ca3af; margin-bottom: 2px; }
     a { text-decoration: none; color: #2563eb; font-weight: 600; font-size: 12px; }
 
-    /* === JSON viewer === */
     pre {
-        background: #111827;
-        color: #e5e7eb;
-        border-radius: 10px;
-        padding: 12px;
-        max-height: 200px;
-        overflow-y: auto;
-        font-size: 11px;
+        background: #111827; color: #e5e7eb; border-radius: 10px;
+        padding: 12px; max-height: 200px; overflow-y: auto; font-size: 11px;
     }
-
-    /* === Hidden inputs === */
     #token, #pid, #fhir, #obs { display: none !important; }
-
-    /* === Bottom cards row === */
-    .bottom-row { display: flex; gap: 10px; align-items: stretch; }
-    .bottom-left  { flex: 6; min-width: 0; }
-    .bottom-right { flex: 6; min-width: 0; }
 
     """),
 
@@ -267,98 +174,65 @@ app_ui = ui.page_fluid(
         ui.tags.pre(ui.output_text("patient_info"))
     ),
 
-    # Main layout
+    # ── Main layout ──────────────────────────────────
     ui.layout_sidebar(
 
         ui.sidebar(
-
             ui.div("Clinical Features", class_="sidebar-title"),
-            ui.p(
-                "Auto-populated from FHIR. Editable by clinicians.",
-                class_="sidebar-sub"
-            ),
-
-            ui.input_radio_buttons(
-                "chills", "Absence of Chills",
-                {"No": "No", "Yes": "Yes"}, inline=True
-            ),
-            ui.input_radio_buttons(
-                "hypothermia", "Hypothermia (Temp < 36°C)",
-                {"No": "No", "Yes": "Yes"}, inline=True
-            ),
-            ui.input_radio_buttons(
-                "anemia", "Anemia (RBC < 4M/uL)",
-                {"No": "No", "Yes": "Yes"}, inline=True
-            ),
-            ui.input_radio_buttons(
-                "rdw", "RDW > 14.5%",
-                {"No": "No", "Yes": "Yes"}, inline=True
-            ),
-            ui.input_radio_buttons(
-                "malignancy", "History of Malignancy",
-                {"No": "No", "Yes": "Yes"}, inline=True
-            ),
-
+            ui.p("Auto-populated from FHIR. Editable by clinicians.", class_="sidebar-sub"),
+            ui.input_radio_buttons("chills",      "Absence of Chills",         {"No":"No","Yes":"Yes"}, inline=True),
+            ui.input_radio_buttons("hypothermia", "Hypothermia (Temp < 36°C)", {"No":"No","Yes":"Yes"}, inline=True),
+            ui.input_radio_buttons("anemia",      "Anemia (RBC < 4M/uL)",      {"No":"No","Yes":"Yes"}, inline=True),
+            ui.input_radio_buttons("rdw",         "RDW > 14.5%",               {"No":"No","Yes":"Yes"}, inline=True),
+            ui.input_radio_buttons("malignancy",  "History of Malignancy",     {"No":"No","Yes":"Yes"}, inline=True),
             width="240px",
         ),
 
-        # Main content
-        ui.div(
+        # ── Top row: 3 summary cards ─────────────────
+        ui.layout_columns(
 
-            # Top row: 3 summary cards spanning full width
             ui.div(
-                ui.div(
-                    ui.div("CHARM Score", class_="summary-title"),
-                    ui.div(ui.output_text("score_text"), class_="summary-value"),
-                    class_="summary-card"
-                ),
-                ui.div(
-                    ui.div("Mortality Risk", class_="summary-title"),
-                    ui.output_ui("prob_inline"),
-                    class_="summary-card"
-                ),
-                ui.div(
-                    ui.div("Active Factors", class_="summary-title"),
-                    ui.div(ui.output_text("factor_count"), class_="summary-value"),
-                    class_="summary-card"
-                ),
-                class_="summary-row"
+                ui.div("CHARM Score",    class_="summary-title"),
+                ui.div(ui.output_text("score_text"), class_="summary-value"),
+                class_="summary-card"
             ),
 
-            # Bottom row: Risk card (left) + Factors card (right) — equal width
             ui.div(
+                ui.div("Mortality Risk", class_="summary-title"),
+                ui.output_ui("prob_inline"),
+                class_="summary-card"
+            ),
 
-                ui.div(
-                    ui.div(
-                        ui.div("Estimated Mortality Risk", class_="section-title"),
-                        ui.output_ui("prob"),
-                        ui.output_ui("risk_label"),
-                        ui.output_ui("risk_bar"),
-                        ui.hr(),
-                        ui.p(
-                            ui.a("View Reference Paper",
-                                 href="https://www.ncbi.nlm.nih.gov/pubmed/?term=27832977",
-                                 target="_blank")
-                        ),
-                        ui.p("Produced by Dr. Chin-Chieh Wu",   class_="footer-text"),
-                        ui.p("SMART on FHIR UI enhanced by Howard", class_="footer-text"),
-                        class_="card"
-                    ),
-                    class_="bottom-left"
-                ),
+            ui.div(
+                ui.div("Active Factors", class_="summary-title"),
+                ui.div(ui.output_text("factor_count"), class_="summary-value"),
+                class_="summary-card"
+            ),
 
-                ui.div(
-                    ui.div(
-                        ui.div("Contributing Clinical Factors", class_="section-title"),
-                        ui.output_ui("factor_list"),
-                        class_="card"
-                    ),
-                    class_="bottom-right"
-                ),
+            # ── Bottom row: risk card + factors card ─
+            ui.div(
+                ui.div("Estimated Mortality Risk", class_="section-title"),
+                ui.output_ui("prob"),
+                ui.output_ui("risk_label"),
+                ui.output_ui("risk_bar"),
+                ui.hr(),
+                ui.p(ui.a("View Reference Paper",
+                           href="https://www.ncbi.nlm.nih.gov/pubmed/?term=27832977",
+                           target="_blank")),
+                ui.p("Produced by Dr. Chin-Chieh Wu",       class_="footer-text"),
+                ui.p("SMART on FHIR UI enhanced by Howard", class_="footer-text"),
+                class_="card"
+            ),
 
-                class_="bottom-row"
-            )
-        )
+            ui.div(
+                ui.div("Contributing Clinical Factors", class_="section-title"),
+                ui.output_ui("factor_list"),
+                class_="card"
+            ),
+
+            col_widths=[4, 4, 4, 6, 6],   # row1: 3 equal cards; row2: 50/50
+            row_heights=["auto", "1fr"],
+        ),
     )
 )
 
@@ -366,14 +240,7 @@ app_ui = ui.page_fluid(
 # CHARM Table
 # =====================================================
 
-CHARM_TABLE = {
-    0: 0.36,
-    1: 1.89,
-    2: 5.79,
-    3: 12.97,
-    4: 23.58,
-    5: 34.15
-}
+CHARM_TABLE = {0:0.36, 1:1.89, 2:5.79, 3:12.97, 4:23.58, 5:34.15}
 
 # =====================================================
 # Server
@@ -385,23 +252,18 @@ def server(input, output, session):
     def fhir_data():
         if not (input.token() and input.pid() and input.fhir()):
             return {}
-        headers = {
-            "Authorization": f"Bearer {input.token()}",
-            "Accept": "application/fhir+json"
-        }
+        headers = {"Authorization": f"Bearer {input.token()}", "Accept": "application/fhir+json"}
         data = {}
         try:
             data["patient"] = requests.get(
                 f"{input.fhir()}/Patient/{input.pid()}",
-                headers=headers, verify=False, timeout=10
-            ).json()
+                headers=headers, verify=False, timeout=10).json()
         except Exception as e:
             data["error_patient"] = str(e)
         if input.obs():
             try:
                 data["observation"] = requests.get(
-                    input.obs(), headers=headers, verify=False, timeout=10
-                ).json()
+                    input.obs(), headers=headers, verify=False, timeout=10).json()
             except Exception as e:
                 data["error_observation"] = str(e)
         return data
@@ -419,16 +281,11 @@ def server(input, output, session):
         defaults = dict(chills="No", hypothermia="No", anemia="No", rdw="No", malignancy="No")
         for c in obs["component"]:
             code = c.get("code", {}).get("coding", [{}])[0].get("code")
-            if code == "chills"     and c.get("valueInteger") == 1:
-                defaults["chills"] = "Yes"
-            elif code == "malignancy" and c.get("valueInteger") == 1:
-                defaults["malignancy"] = "Yes"
-            elif code == "789-8"    and c.get("valueQuantity", {}).get("value", 9) < 4:
-                defaults["anemia"] = "Yes"
-            elif code == "788-0"    and c.get("valueQuantity", {}).get("value", 0) > 14.5:
-                defaults["rdw"] = "Yes"
-            elif code == "8310-5"   and c.get("valueQuantity", {}).get("value", 99) < 36:
-                defaults["hypothermia"] = "Yes"
+            if   code == "chills"   and c.get("valueInteger") == 1:                           defaults["chills"]      = "Yes"
+            elif code == "malignancy" and c.get("valueInteger") == 1:                         defaults["malignancy"]  = "Yes"
+            elif code == "789-8"    and c.get("valueQuantity", {}).get("value", 9)   < 4:    defaults["anemia"]      = "Yes"
+            elif code == "788-0"    and c.get("valueQuantity", {}).get("value", 0)   > 14.5: defaults["rdw"]         = "Yes"
+            elif code == "8310-5"   and c.get("valueQuantity", {}).get("value", 99) < 36:    defaults["hypothermia"] = "Yes"
         ui.update_radio_buttons(session, "chills",      selected=defaults["chills"])
         ui.update_radio_buttons(session, "hypothermia", selected=defaults["hypothermia"])
         ui.update_radio_buttons(session, "anemia",      selected=defaults["anemia"])
@@ -455,7 +312,6 @@ def server(input, output, session):
     def factor_count():
         return f"{score()} / 5"
 
-    # Compact version for summary card (no unit line)
     @output
     @render.ui
     def prob_inline():
@@ -474,12 +330,9 @@ def server(input, output, session):
     @render.ui
     def risk_label():
         p = CHARM_TABLE.get(score(), 0)
-        if p < 5:
-            return ui.div("Very Low Risk", class_="risk-tag tag-low")
-        elif p < 20:
-            return ui.div("Moderate Risk", class_="risk-tag tag-mid")
-        else:
-            return ui.div("High Risk",     class_="risk-tag tag-high")
+        if p < 5:   return ui.div("Very Low Risk", class_="risk-tag tag-low")
+        elif p < 20: return ui.div("Moderate Risk", class_="risk-tag tag-mid")
+        else:        return ui.div("High Risk",     class_="risk-tag tag-high")
 
     @output
     @render.ui
@@ -487,16 +340,10 @@ def server(input, output, session):
         p    = CHARM_TABLE.get(score(), 0)
         left = min(p / 40 * 100, 100)
         return ui.div(
-            ui.div(
-                {"class": "risk-bar"},
-                ui.div({"class": "risk-marker", "style": f"left:{left}%"})
-            ),
-            ui.div(
-                ui.span("0%"),
-                ui.span("20%"),
-                ui.span("40%+"),
-                class_="risk-bar-labels"
-            )
+            ui.div({"class":"risk-bar"},
+                   ui.div({"class":"risk-marker", "style":f"left:{left}%"})),
+            ui.div(ui.span("0%"), ui.span("20%"), ui.span("40%+"),
+                   class_="risk-bar-labels")
         )
 
     @output
@@ -505,17 +352,17 @@ def server(input, output, session):
         def row(label, val):
             active = val == "Yes"
             return ui.div(
-                {"class": "factor-item"},
+                {"class":"factor-item"},
                 ui.span("✔" if active else "✘",
                         class_="factor-yes" if active else "factor-no"),
                 ui.div(label)
             )
         return ui.div(
-            row("Absence of Chills",          input.chills()),
-            row("Hypothermia (Temp < 36°C)",  input.hypothermia()),
-            row("Anemia (RBC < 4M/uL)",       input.anemia()),
-            row("RDW > 14.5%",                input.rdw()),
-            row("History of Malignancy",      input.malignancy()),
+            row("Absence of Chills",         input.chills()),
+            row("Hypothermia (Temp < 36°C)", input.hypothermia()),
+            row("Anemia (RBC < 4M/uL)",      input.anemia()),
+            row("RDW > 14.5%",               input.rdw()),
+            row("History of Malignancy",     input.malignancy()),
         )
 
 app = App(app_ui, server)
