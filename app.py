@@ -236,11 +236,11 @@ def server(input, output, session):
             elif code == "789-8"      and c.get("valueQuantity", {}).get("value", 9)   < 4:    defaults["anemia"]      = "Yes"
             elif code == "788-0"      and c.get("valueQuantity", {}).get("value", 0)   > 14.5: defaults["rdw"]         = "Yes"
             elif code == "8310-5"     and c.get("valueQuantity", {}).get("value", 99) < 36:    defaults["hypothermia"] = "Yes"
-        ui.update_radio_buttons(session, "chills",      selected=defaults["chills"])
-        ui.update_radio_buttons(session, "hypothermia", selected=defaults["hypothermia"])
-        ui.update_radio_buttons(session, "anemia",      selected=defaults["anemia"])
-        ui.update_radio_buttons(session, "rdw",         selected=defaults["rdw"])
-        ui.update_radio_buttons(session, "malignancy",  selected=defaults["malignancy"])
+        for k, v in defaults.items():
+    session.send_input_message(
+        k,
+        {"value": v}
+    )
 
     @reactive.Calc
     def score():
