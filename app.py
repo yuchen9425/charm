@@ -237,10 +237,10 @@ def server(input, output, session):
             elif code == "788-0"      and c.get("valueQuantity", {}).get("value", 0)   > 14.5: defaults["rdw"]         = "Yes"
             elif code == "8310-5"     and c.get("valueQuantity", {}).get("value", 99) < 36:    defaults["hypothermia"] = "Yes"
         for k, v in defaults.items():
-    session.send_input_message(
-        k,
-        {"value": v}
-    )
+            session.send_input_message(
+                k,
+                {"value": v}
+            )
 
     @reactive.Calc
     def score():
