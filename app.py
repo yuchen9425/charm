@@ -179,8 +179,6 @@ app_ui = ui.page_fluid(
                 ui.p(ui.a("View Reference Paper",
                            href="https://www.ncbi.nlm.nih.gov/pubmed/?term=27832977",
                            target="_blank")),
-                ui.p("Produced by Dr. Chin-Chieh Wu",       class_="footer-text"),
-                ui.p("SMART on FHIR UI enhanced by Howard", class_="footer-text"),
                 class_="card"
             ),
 
