@@ -5,10 +5,6 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# =====================================================
-# UI
-# =====================================================
-
 app_ui = ui.page_fluid(
 
     ui.tags.script("""
@@ -29,7 +25,6 @@ app_ui = ui.page_fluid(
     """),
 
     ui.tags.style("""
-
     html, body { height: 100%; }
     body {
         background: #f4f7fb;
@@ -38,80 +33,50 @@ app_ui = ui.page_fluid(
         padding: 12px 20px 20px;
         margin: 0;
     }
-    h1,h2,h3,h4,h5 { font-weight: 700; }
-
     .page-header {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        margin-bottom: 10px;
-        flex-wrap: wrap;
-        gap: 6px;
+        display: flex; align-items: baseline;
+        justify-content: space-between; margin-bottom: 10px;
+        flex-wrap: wrap; gap: 6px;
     }
-    .page-title { font-size: 26px; font-weight: 800; color: #111827; line-height: 1.2; }
+    .page-title { font-size: 26px; font-weight: 800; color: #111827; }
     .page-meta  { font-size: 12px; color: #9ca3af; }
-
     details { margin-bottom: 10px; font-size: 13px; color: #6b7280; }
     details summary { cursor: pointer; user-select: none; }
-
-    /* Sidebar */
     .sidebar {
-        background: white;
-        border-radius: 16px;
-        padding: 16px 18px;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+        background: white; border-radius: 16px; padding: 16px 18px;
+        border: 1px solid #e5e7eb; box-shadow: 0 4px 14px rgba(0,0,0,0.04);
     }
     .sidebar-title {
         font-size: 13px; font-weight: 700; letter-spacing:.04em;
         text-transform: uppercase; color: #9ca3af; margin-bottom: 4px;
     }
-    .sidebar-sub {
-        font-size: 12px; color: #9ca3af; margin-bottom: 14px; line-height: 1.4;
-    }
+    .sidebar-sub { font-size: 12px; color: #9ca3af; margin-bottom: 14px; line-height: 1.4; }
     .shiny-input-radiogroup { margin-bottom: 12px; }
     .shiny-input-radiogroup > label {
-        font-size: 13px; font-weight: 600; color: #374151;
-        margin-bottom: 3px; display: block;
+        font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 3px; display: block;
     }
     .form-check { margin-top: 2px; }
-    .form-check-label { font-size: 13px; color: #374151; }
-
-    /* Summary cards */
     .summary-card {
-        background: white;
-        border-radius: 14px;
-        padding: 14px 16px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-        border: 1px solid #eef2f7;
-        text-align: center;
-        margin-bottom: 10px;
+        background: white; border-radius: 14px; padding: 14px 16px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.04); border: 1px solid #eef2f7; text-align: center;
     }
     .summary-title {
         font-size: 12px; font-weight: 600; letter-spacing:.04em;
         text-transform: uppercase; color: #9ca3af; margin-bottom: 6px;
     }
     .summary-value { font-size: 28px; font-weight: 800; color: #111827; line-height: 1; }
-
-    /* Card */
     .card {
-        background: white;
-        border-radius: 16px;
-        padding: 18px 20px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-        border: 1px solid #eef2f7;
+        background: white; border-radius: 16px; padding: 18px 20px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.04); border: 1px solid #eef2f7;
     }
     .section-title {
         font-size: 13px; font-weight: 700; letter-spacing:.04em;
         text-transform: uppercase; color: #9ca3af; margin-bottom: 12px;
     }
-
-    /* Risk */
     .risk-number { font-size: 52px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
     .risk-low  { color: #16a34a; }
     .risk-mid  { color: #d97706; }
     .risk-high { color: #dc2626; }
-
     .risk-tag {
         display: inline-block; padding: 5px 14px; border-radius: 999px;
         font-weight: 700; font-size: 12px; margin-bottom: 14px;
@@ -119,7 +84,6 @@ app_ui = ui.page_fluid(
     .tag-low  { background: #dcfce7; color: #166534; }
     .tag-mid  { background: #fef3c7; color: #92400e; }
     .tag-high { background: #fee2e2; color: #991b1b; }
-
     .risk-bar {
         height: 10px; border-radius: 999px;
         background: linear-gradient(to right, #22c55e, #facc15, #ef4444);
@@ -133,48 +97,48 @@ app_ui = ui.page_fluid(
         display: flex; justify-content: space-between;
         font-size: 11px; color: #9ca3af; margin-bottom: 14px;
     }
-
-    /* Factors */
     .factor-item {
-        display: flex; align-items: center; gap: 10px;
-        padding: 8px 10px; border-radius: 10px; margin-bottom: 6px;
-        background: #f9fafb; border: 1px solid #e5e7eb; font-size: 13px;
+        display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+        border-radius: 10px; margin-bottom: 6px; background: #f9fafb;
+        border: 1px solid #e5e7eb; font-size: 13px;
     }
     .factor-yes { color: #16a34a; font-weight: 800; font-size: 15px; }
     .factor-no  { color: #dc2626; font-weight: 800; font-size: 15px; }
-
     hr { border: none; border-top: 1px solid #f3f4f6; margin: 14px 0 10px; }
     .footer-text { font-size: 12px; color: #9ca3af; margin-bottom: 2px; }
     a { text-decoration: none; color: #2563eb; font-weight: 600; font-size: 12px; }
-
     pre {
         background: #111827; color: #e5e7eb; border-radius: 10px;
         padding: 12px; max-height: 200px; overflow-y: auto; font-size: 11px;
     }
     #token, #pid, #fhir, #obs { display: none !important; }
-
+    /* DEBUG banner */
+    #debug-bar {
+        background: #1e3a5f; color: #93c5fd; font-family: monospace;
+        font-size: 12px; padding: 6px 12px; border-radius: 8px;
+        margin-bottom: 10px;
+    }
     """),
 
-    # Hidden inputs
     ui.input_text("token", ""),
     ui.input_text("pid",   ""),
     ui.input_text("fhir",  ""),
     ui.input_text("obs",   ""),
 
-    # Page header
     ui.div(
         ui.div("Predict In-hospital Mortality — CHARM Score", class_="page-title"),
         ui.div("SMART on FHIR · Sandbox", class_="page-meta"),
         class_="page-header"
     ),
 
-    # FHIR expandable
+    # DEBUG bar — shows live reactive values so we can confirm reactivity works
+    ui.div(ui.output_text("debug_bar"), id="debug-bar"),
+
     ui.tags.details(
         ui.tags.summary("▸ FHIR Patient & Observation Data"),
         ui.tags.pre(ui.output_text("patient_info"))
     ),
 
-    # ── Main layout ──────────────────────────────────
     ui.layout_sidebar(
 
         ui.sidebar(
@@ -188,7 +152,6 @@ app_ui = ui.page_fluid(
             width="240px",
         ),
 
-        # ── Top row: 3 summary cards ─────────────────
         ui.layout_columns(
 
             ui.div(
@@ -196,20 +159,17 @@ app_ui = ui.page_fluid(
                 ui.div(ui.output_text("score_text"), class_="summary-value"),
                 class_="summary-card"
             ),
-
             ui.div(
                 ui.div("Mortality Risk", class_="summary-title"),
                 ui.output_ui("prob_inline"),
                 class_="summary-card"
             ),
-
             ui.div(
                 ui.div("Active Factors", class_="summary-title"),
                 ui.div(ui.output_text("factor_count"), class_="summary-value"),
                 class_="summary-card"
             ),
 
-            # ── Bottom row: risk card + factors card ─
             ui.div(
                 ui.div("Estimated Mortality Risk", class_="section-title"),
                 ui.output_ui("prob"),
@@ -230,21 +190,13 @@ app_ui = ui.page_fluid(
                 class_="card"
             ),
 
-            col_widths=[4, 4, 4, 6, 6],   # row1: 3 equal cards; row2: 50/50
+            col_widths=[4, 4, 4, 6, 6],
             row_heights=["auto", "1fr"],
         ),
     )
 )
 
-# =====================================================
-# CHARM Table
-# =====================================================
-
 CHARM_TABLE = {0:0.36, 1:1.89, 2:5.79, 3:12.97, 4:23.58, 5:34.15}
-
-# =====================================================
-# Server
-# =====================================================
 
 def server(input, output, session):
 
@@ -281,11 +233,11 @@ def server(input, output, session):
         defaults = dict(chills="No", hypothermia="No", anemia="No", rdw="No", malignancy="No")
         for c in obs["component"]:
             code = c.get("code", {}).get("coding", [{}])[0].get("code")
-            if   code == "chills"   and c.get("valueInteger") == 1:                           defaults["chills"]      = "Yes"
-            elif code == "malignancy" and c.get("valueInteger") == 1:                         defaults["malignancy"]  = "Yes"
-            elif code == "789-8"    and c.get("valueQuantity", {}).get("value", 9)   < 4:    defaults["anemia"]      = "Yes"
-            elif code == "788-0"    and c.get("valueQuantity", {}).get("value", 0)   > 14.5: defaults["rdw"]         = "Yes"
-            elif code == "8310-5"   and c.get("valueQuantity", {}).get("value", 99) < 36:    defaults["hypothermia"] = "Yes"
+            if   code == "chills"     and c.get("valueInteger") == 1:                           defaults["chills"]      = "Yes"
+            elif code == "malignancy" and c.get("valueInteger") == 1:                           defaults["malignancy"]  = "Yes"
+            elif code == "789-8"      and c.get("valueQuantity", {}).get("value", 9)   < 4:    defaults["anemia"]      = "Yes"
+            elif code == "788-0"      and c.get("valueQuantity", {}).get("value", 0)   > 14.5: defaults["rdw"]         = "Yes"
+            elif code == "8310-5"     and c.get("valueQuantity", {}).get("value", 99) < 36:    defaults["hypothermia"] = "Yes"
         ui.update_radio_buttons(session, "chills",      selected=defaults["chills"])
         ui.update_radio_buttons(session, "hypothermia", selected=defaults["hypothermia"])
         ui.update_radio_buttons(session, "anemia",      selected=defaults["anemia"])
@@ -294,13 +246,23 @@ def server(input, output, session):
 
     @reactive.Calc
     def score():
-        return sum([
+        s = sum([
             input.chills()      == "Yes",
             input.hypothermia() == "Yes",
             input.anemia()      == "Yes",
             input.rdw()         == "Yes",
             input.malignancy()  == "Yes",
         ])
+        print(f"[DEBUG] score() = {s}  chills={input.chills()} hypo={input.hypothermia()}")
+        return s
+
+    # DEBUG output — placed OUTSIDE layout_sidebar to confirm basic reactivity
+    @output
+    @render.text
+    def debug_bar():
+        return (f"score={score()}  "
+                f"chills={input.chills()}  hypo={input.hypothermia()}  "
+                f"anemia={input.anemia()}  rdw={input.rdw()}  malig={input.malignancy()}")
 
     @output
     @render.text
@@ -330,9 +292,9 @@ def server(input, output, session):
     @render.ui
     def risk_label():
         p = CHARM_TABLE.get(score(), 0)
-        if p < 5:   return ui.div("Very Low Risk", class_="risk-tag tag-low")
+        if p < 5:    return ui.div("Very Low Risk", class_="risk-tag tag-low")
         elif p < 20: return ui.div("Moderate Risk", class_="risk-tag tag-mid")
-        else:        return ui.div("High Risk",     class_="risk-tag tag-high")
+        else:        return ui.div("High Risk",      class_="risk-tag tag-high")
 
     @output
     @render.ui
