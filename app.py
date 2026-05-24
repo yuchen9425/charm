@@ -6,13 +6,26 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # =====================================================
+# CHARM SCORE TABLE
+# =====================================================
+
+CHARM_TABLE = {
+    0: 0.36,
+    1: 1.89,
+    2: 5.79,
+    3: 12.97,
+    4: 23.58,
+    5: 34.15
+}
+
+# =====================================================
 # UI
 # =====================================================
 
 app_ui = ui.page_fluid(
 
     # =================================================
-    # URL HASH → SHINY INPUT
+    # SMART on FHIR HASH PARSER
     # =================================================
 
     ui.tags.script("""
@@ -52,10 +65,10 @@ app_ui = ui.page_fluid(
     }
 
     body {
-        background: #f4f7fb;
+        background: #f3f6fb;
         font-family: 'Segoe UI', sans-serif;
         color: #1f2937;
-        padding: 14px 22px;
+        padding: 18px;
     }
 
     /* =========================================
@@ -63,19 +76,24 @@ app_ui = ui.page_fluid(
     ========================================= */
 
     .page-header {
+
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        margin-bottom: 12px;
+
+        margin-bottom: 16px;
     }
 
     .page-title {
+
         font-size: 34px;
         font-weight: 800;
+
         color: #111827;
     }
 
     .page-meta {
+
         font-size: 13px;
         color: #9ca3af;
     }
@@ -85,20 +103,27 @@ app_ui = ui.page_fluid(
     ========================================= */
 
     .sidebar {
+
         background: white;
+
         border-radius: 18px;
-        padding: 18px;
+
+        padding: 20px;
+
         border: 1px solid #e5e7eb;
 
         box-shadow:
-            0 6px 18px rgba(0,0,0,0.04);
+            0 6px 18px rgba(0,0,0,0.05);
     }
 
     .sidebar-title {
 
         font-size: 14px;
+
         font-weight: 800;
+
         text-transform: uppercase;
+
         letter-spacing: .05em;
 
         color: #9ca3af;
@@ -109,6 +134,7 @@ app_ui = ui.page_fluid(
     .sidebar-sub {
 
         font-size: 12px;
+
         color: #9ca3af;
 
         margin-bottom: 16px;
@@ -123,13 +149,14 @@ app_ui = ui.page_fluid(
     .shiny-input-radiogroup > label {
 
         font-size: 13px;
+
         font-weight: 700;
 
         color: #374151;
     }
 
     /* =========================================
-       Cards
+       Card
     ========================================= */
 
     .card {
@@ -143,7 +170,7 @@ app_ui = ui.page_fluid(
         border: 1px solid #e5e7eb;
 
         box-shadow:
-            0 6px 18px rgba(0,0,0,0.04);
+            0 6px 18px rgba(0,0,0,0.05);
     }
 
     .section-title {
@@ -171,7 +198,7 @@ app_ui = ui.page_fluid(
 
         border-radius: 16px;
 
-        padding: 14px;
+        padding: 16px;
 
         text-align: center;
 
@@ -201,8 +228,6 @@ app_ui = ui.page_fluid(
         font-size: 30px;
 
         font-weight: 800;
-
-        line-height: 1;
     }
 
     /* =========================================
@@ -222,6 +247,36 @@ app_ui = ui.page_fluid(
     }
 
     /* =========================================
+       Alert Banner
+    ========================================= */
+
+    .alert-banner {
+
+        padding: 14px;
+
+        border-radius: 14px;
+
+        font-weight: 700;
+
+        margin-bottom: 16px;
+    }
+
+    .alert-low {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .alert-mid {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .alert-high {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+    /* =========================================
        Gauge
     ========================================= */
 
@@ -232,8 +287,6 @@ app_ui = ui.page_fluid(
         flex-direction: column;
 
         align-items: center;
-
-        justify-content: center;
     }
 
     .gauge-circle {
@@ -296,11 +349,11 @@ app_ui = ui.page_fluid(
 
         font-weight: 800;
 
-        margin-top: -8px;
+        margin-top: -10px;
     }
 
     /* =========================================
-       Risk Tag
+       Risk Badge
     ========================================= */
 
     .risk-tag {
@@ -334,6 +387,59 @@ app_ui = ui.page_fluid(
     }
 
     /* =========================================
+       Risk Bar
+    ========================================= */
+
+    .risk-bar-wrapper {
+        margin-top: 18px;
+    }
+
+    .risk-bar {
+
+        width: 100%;
+        height: 14px;
+
+        border-radius: 999px;
+
+        background:
+            linear-gradient(
+                to right,
+                #22c55e,
+                #facc15,
+                #ef4444
+            );
+
+        position: relative;
+    }
+
+    .risk-marker {
+
+        position: absolute;
+
+        top: -5px;
+
+        width: 5px;
+        height: 24px;
+
+        background: #111827;
+
+        border-radius: 999px;
+    }
+
+    .risk-scale {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        margin-top: 8px;
+
+        font-size: 12px;
+
+        color: #9ca3af;
+    }
+
+    /* =========================================
        Interpretation
     ========================================= */
 
@@ -349,7 +455,7 @@ app_ui = ui.page_fluid(
 
         font-size: 13px;
 
-        line-height: 1.6;
+        line-height: 1.7;
 
         color: #374151;
     }
@@ -431,7 +537,7 @@ app_ui = ui.page_fluid(
     ========================================= */
 
     details {
-        margin-bottom: 10px;
+        margin-bottom: 14px;
     }
 
     details summary {
@@ -450,7 +556,7 @@ app_ui = ui.page_fluid(
 
         padding: 12px;
 
-        max-height: 220px;
+        max-height: 240px;
 
         overflow-y: auto;
 
@@ -458,7 +564,7 @@ app_ui = ui.page_fluid(
     }
 
     /* =========================================
-       Hide Hidden Inputs
+       Hide Inputs
     ========================================= */
 
     #token, #pid, #fhir, #obs {
@@ -488,7 +594,7 @@ app_ui = ui.page_fluid(
         ),
 
         ui.div(
-            "SMART on FHIR Dashboard",
+            "SMART on FHIR Clinical Dashboard",
             class_="page-meta"
         ),
 
@@ -496,7 +602,7 @@ app_ui = ui.page_fluid(
     ),
 
     # =================================================
-    # FHIR RAW DATA
+    # RAW FHIR DATA
     # =================================================
 
     ui.tags.details(
@@ -523,12 +629,12 @@ app_ui = ui.page_fluid(
         ui.sidebar(
 
             ui.div(
-                "Clinical Features",
+                "Clinical Risk Assessment",
                 class_="sidebar-title"
             ),
 
             ui.p(
-                "Auto-populated from FHIR. Editable by clinicians.",
+                "Auto-populated from SMART on FHIR resources.",
                 class_="sidebar-sub"
             ),
 
@@ -567,7 +673,7 @@ app_ui = ui.page_fluid(
                 inline=True
             ),
 
-            width="260px"
+            width="270px"
         ),
 
         # =============================================
@@ -576,8 +682,10 @@ app_ui = ui.page_fluid(
 
         ui.div(
 
+            ui.output_ui("risk_alert"),
+
             # =========================================
-            # SUMMARY ROW
+            # SUMMARY CARDS
             # =========================================
 
             ui.layout_columns(
@@ -630,7 +738,7 @@ app_ui = ui.page_fluid(
             ui.br(),
 
             # =========================================
-            # SECOND ROW
+            # MAIN ROW
             # =========================================
 
             ui.layout_columns(
@@ -652,7 +760,7 @@ app_ui = ui.page_fluid(
                 ),
 
                 # =====================================
-                # RISK CARD
+                # RISK VISUALIZATION
                 # =====================================
 
                 ui.div(
@@ -666,20 +774,13 @@ app_ui = ui.page_fluid(
 
                     ui.output_ui("gauge_ui"),
 
-                    ui.output_ui("risk_label"),
+                    ui.output_ui("risk_badge"),
 
-                    ui.br(),
-
-                    ui.div(
-                        "Clinical Interpretation",
-                        class_="section-title"
-                    ),
-
-                    ui.output_ui("interpretation")
+                    ui.output_ui("risk_bar")
                 ),
 
                 # =====================================
-                # FACTOR CARD
+                # FACTORS
                 # =====================================
 
                 ui.div(
@@ -695,23 +796,45 @@ app_ui = ui.page_fluid(
                 ),
 
                 col_widths=[3,5,4]
+            ),
+
+            ui.br(),
+
+            # =========================================
+            # INTERPRETATION + RECOMMENDATION
+            # =========================================
+
+            ui.layout_columns(
+
+                ui.div(
+
+                    {"class":"card"},
+
+                    ui.div(
+                        "Clinical Interpretation",
+                        class_="section-title"
+                    ),
+
+                    ui.output_ui("interpretation")
+                ),
+
+                ui.div(
+
+                    {"class":"card"},
+
+                    ui.div(
+                        "Clinical Recommendation",
+                        class_="section-title"
+                    ),
+
+                    ui.output_ui("recommendation")
+                ),
+
+                col_widths=[6,6]
             )
         )
     )
 )
-
-# =====================================================
-# CHARM TABLE
-# =====================================================
-
-CHARM_TABLE = {
-    0: 0.36,
-    1: 1.89,
-    2: 5.79,
-    3: 12.97,
-    4: 23.58,
-    5: 34.15
-}
 
 # =====================================================
 # SERVER
@@ -815,26 +938,21 @@ def server(input, output, session):
             )
 
             if code == "chills" and c.get("valueInteger") == 1:
-
                 defaults["chills"] = "Yes"
 
             elif code == "malignancy" and c.get("valueInteger") == 1:
-
                 defaults["malignancy"] = "Yes"
 
             elif code == "789-8" and \
                  c.get("valueQuantity", {}).get("value", 9) < 4:
-
                 defaults["anemia"] = "Yes"
 
             elif code == "788-0" and \
                  c.get("valueQuantity", {}).get("value", 0) > 14.5:
-
                 defaults["rdw"] = "Yes"
 
             elif code == "8310-5" and \
                  c.get("valueQuantity", {}).get("value", 99) < 36:
-
                 defaults["hypothermia"] = "Yes"
 
         for k, v in defaults.items():
@@ -865,24 +983,49 @@ def server(input, output, session):
         ])
 
     # =============================================
-    # SUMMARY OUTPUTS
+    # ALERT BANNER
+    # =============================================
+
+    @output
+    @render.ui
+    def risk_alert():
+
+        p = CHARM_TABLE.get(score(), 0)
+
+        if p >= 20:
+
+            return ui.div(
+                "⚠ High predicted in-hospital mortality risk detected.",
+                class_="alert-banner alert-high"
+            )
+
+        elif p >= 5:
+
+            return ui.div(
+                "⚠ Moderate mortality risk identified.",
+                class_="alert-banner alert-mid"
+            )
+
+        else:
+
+            return ui.div(
+                "✓ Patient currently demonstrates low mortality risk.",
+                class_="alert-banner alert-low"
+            )
+
+    # =============================================
+    # SUMMARY
     # =============================================
 
     @output
     @render.text
     def score_text():
-
         return str(score())
 
     @output
     @render.text
     def factor_count():
-
         return f"{score()} / 5"
-
-    # =============================================
-    # INLINE RISK
-    # =============================================
 
     @output
     @render.ui
@@ -968,7 +1111,7 @@ def server(input, output, session):
         )
 
     # =============================================
-    # GAUGE UI
+    # GAUGE
     # =============================================
 
     @output
@@ -1012,12 +1155,12 @@ def server(input, output, session):
         )
 
     # =============================================
-    # RISK LABEL
+    # RISK BADGE
     # =============================================
 
     @output
     @render.ui
-    def risk_label():
+    def risk_badge():
 
         p = CHARM_TABLE.get(score(), 0)
 
@@ -1041,6 +1184,44 @@ def server(input, output, session):
                 "High Risk",
                 class_="risk-tag tag-high"
             )
+
+    # =============================================
+    # RISK BAR
+    # =============================================
+
+    @output
+    @render.ui
+    def risk_bar():
+
+        p = CHARM_TABLE.get(score(), 0)
+
+        left = min((p / 40) * 100, 100)
+
+        return ui.div(
+
+            {"class":"risk-bar-wrapper"},
+
+            ui.div(
+
+                {"class":"risk-bar"},
+
+                ui.div(
+                    {
+                        "class":"risk-marker",
+                        "style":f"left:calc({left}% - 2px);"
+                    }
+                )
+            ),
+
+            ui.div(
+
+                ui.span("0%"),
+                ui.span("20%"),
+                ui.span("40%+"),
+
+                class_="risk-scale"
+            )
+        )
 
     # =============================================
     # INTERPRETATION
@@ -1083,6 +1264,42 @@ def server(input, output, session):
                 f"This patient demonstrates elevated predicted "
                 f"in-hospital mortality risk associated with "
                 f"{factors}."
+            )
+
+        return ui.div(
+            text,
+            class_="interpretation-box"
+        )
+
+    # =============================================
+    # RECOMMENDATION
+    # =============================================
+
+    @output
+    @render.ui
+    def recommendation():
+
+        p = CHARM_TABLE.get(score(), 0)
+
+        if p >= 20:
+
+            text = (
+                "Consider intensive monitoring and immediate "
+                "clinical reassessment due to elevated mortality risk."
+            )
+
+        elif p >= 5:
+
+            text = (
+                "Recommend close observation and repeat "
+                "clinical evaluation if patient condition changes."
+            )
+
+        else:
+
+            text = (
+                "Current findings indicate relatively stable "
+                "mortality risk status."
             )
 
         return ui.div(
